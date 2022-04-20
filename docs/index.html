@@ -2,7 +2,7 @@
 <head>
    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
    <script>
-      function readFileAsync(file) {
+      const readFileAsync = (file) => {
          return new Promise((resolve, reject) => {
             let reader = new FileReader(); 
             reader.onload = () => {
@@ -10,9 +10,9 @@
             }; 
             reader.onerror = reject; 
             reader.readAsArrayBuffer(file);
-         })
+         });
       }
-      function download(file, filename, type) {
+      const download = (file, filename, type) => {
          const link = document.getElementById('link');
          link.download = filename;
          let binaryData = [];
@@ -44,6 +44,7 @@
    <input type="file" id="file1"> <br>
    <input type="file" id="file2"> <br>
    <button onclick="merge()">Merge</button> <br>
+   <p id="alert"></p>
    <a id="link">Download</a>
 </body>
 </html>
